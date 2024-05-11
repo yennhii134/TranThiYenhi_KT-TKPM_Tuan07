@@ -28,13 +28,7 @@ public class OrderService {
 
     @Retry(name = "orderService")
     public List<Order> getAllOrder() {
-//        List<Order> orderList = orderRepository.findAll();
-//        for(Order o : orderList){
-//            User user = restTemplate.getForObject(BASEURL+"/get-all/"+o.getId(), User.class);
-//            o.setUser(user);
-//        }
         System.out.println("retry method called "+attempt++ +" times"+" at "+new Date());
-//        return orderList;
         return restTemplate.getForObject(BASEURL+"/get-all", ArrayList.class);
     }
 
